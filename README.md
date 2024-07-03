@@ -72,19 +72,33 @@ class ListTest
 {
     public static void Main(string[] args)
     {
-        // Create data to store in List
-        bool aBoolean = true;
-        char aCharacter = '$';
-        int anInteger = 34567;
-        string aString = "hello";
-
-        // Create List container
-        List list = new List();
-
-        // Use List insert methods
-        list.InsertAtFront(aBoolean);
+         List list = new List();
+        
+        list.InsertAtFront(true);
+        list.InsertAtFront('$');
+        list.InsertAtBack(34567);
+        list.InsertAtBack("hello");
+        
         list.Display();
-        list.InsertAtFront(aCharacter);
-        list.Display();
-        list.InsertAtBack(anInteger);
+
+        try
+        {
+            Console.WriteLine(list.RemoveFromFront() + " removed");
+            list.Display();
+
+            Console.WriteLine(list.RemoveFromFront() + " removed");
+            list.Display();
+
+            Console.WriteLine(list.RemoveFromBack() + " removed");
+            list.Display();
+
+            Console.WriteLine(list.RemoveFromBack() + " removed");
+            list.Display();
+        }
+        catch (EmptyListException ex)
+        {
+            Console.Error.WriteLine("\n" + ex);
+        }
+   }
+}
 ```
